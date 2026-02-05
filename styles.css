@@ -1,0 +1,200 @@
+/* =========================================
+   1. DASHBOARD (HUD Style)
+   ========================================= */
+#cses-stats-dashboard {
+  background: #181a1b;
+  color: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Header Area */
+.dashboard-header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+.dashboard-title { font-size: 1.1rem; color: #fff; font-weight: 700; letter-spacing: 0.5px; }
+
+/* Toggle Switch */
+.rating-toggle-wrapper { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #aaa; cursor: pointer; }
+.rating-toggle-wrapper input { display: none; }
+.toggle-slider {
+  position: relative; width: 36px; height: 20px; background-color: #333; border-radius: 20px; transition: .3s;
+}
+.toggle-slider:before {
+  content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; border-radius: 50%; transition: .3s;
+}
+input:checked + .toggle-slider { background-color: #2563eb; }
+input:checked + .toggle-slider:before { transform: translateX(16px); }
+
+/* Left Side (Grid) */
+.topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.topic-card {
+  background: #25282a; border: 1px solid #3f3f46; border-radius: 8px;
+  padding: 12px; cursor: pointer; transition: all 0.2s ease;
+  position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 70px;
+}
+.topic-card:hover { border-color: #666; background: #2d3032; transform: translateY(-2px); }
+.topic-card.active { border-color: #3b82f6; background: #1e293b; }
+.topic-progress-bar { position: absolute; left: 0; bottom: 0; height: 4px; background: #10b981; transition: width 0.3s ease; }
+.topic-name { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #e5e7eb; }
+.topic-ratio { font-size: 0.8rem; color: #9ca3af; align-self: flex-end; margin-top: 5px; }
+
+/* Right Side (Circle) */
+.dashboard-right {
+  background: #202224; border-radius: 12px; padding: 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #3f3f46;
+  height: 100%;
+}
+.circular-progress {
+  width: 100px; height: 100px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 15px; position: relative;
+  background: conic-gradient(#3b82f6 0deg, #333 0deg);
+}
+.circular-inner { width: 84px; height: 84px; background: #202224; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.progress-percentage { font-size: 1.6rem; font-weight: 800; color: #fff; }
+.summary-details { text-align: center; }
+.summary-count { font-size: 1.2rem; font-weight: bold; color: #e5e7eb; }
+.summary-context { font-size: 0.85rem; color: #3b82f6; margin-top: 4px; }
+
+
+/* =========================================
+   2. SPEEDRUN PANEL (Footer)
+   ========================================= */
+.speedrun-panel {
+  grid-column: 1 / -1; 
+  background: #202224;
+  border-top: 1px solid #333;
+  margin-top: 10px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.speedrun-controls { display: flex; gap: 12px; align-items: center; }
+.speedrun-title { font-weight: bold; color: #f39c12; margin-right: 10px; font-size: 0.95rem; }
+
+.speedrun-select {
+  padding: 6px 10px; border-radius: 6px; background: #333; color: #fff; border: 1px solid #555; outline: none; cursor: pointer;
+}
+.speedrun-btn {
+  padding: 6px 16px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer;
+  background: #2563eb; color: #fff; transition: 0.2s; font-size: 0.9rem;
+}
+.speedrun-btn:hover { background: #1d4ed8; }
+.speedrun-btn.stop-btn { background: #dc2626; }
+.speedrun-btn.stop-btn:hover { background: #b91c1c; }
+.speedrun-btn.backup-btn { background: #4b5563; }
+.speedrun-btn.backup-btn:hover { background: #374151; }
+
+.speedrun-display { display: flex; align-items: center; gap: 20px; }
+.speedrun-timer { font-size: 1.4rem; font-weight: bold; color: #f39c12; font-family: 'Consolas', monospace; }
+.speedrun-stats { font-size: 0.9rem; color: #bbb; }
+
+
+/* =========================================
+   3. SIDEBAR WIDGETS & TOOLS
+   ========================================= */
+/* Stopwatch */
+#cses-stopwatch-widget {
+  margin: 15px 0; padding: 10px;
+  border: 1px solid #ccc; background: #f9f9f9; border-radius: 4px;
+  text-align: center; cursor: pointer; user-select: none; transition: all 0.2s;
+}
+#cses-stopwatch-widget:hover { background: #eee; border-color: #bbb; }
+.stopwatch-icon { font-size: 1.5em; display: block; margin-bottom: 5px; }
+.stopwatch-time { font-family: monospace; font-size: 1.2em; font-weight: bold; color: #333; }
+.stopwatch-label { font-size: 0.8em; color: #777; }
+#cses-stopwatch-widget.running { border-color: #27ae60; background: #e8f5e9; }
+#cses-stopwatch-widget.running .stopwatch-time { color: #27ae60; }
+
+/* Note Widget */
+#cses-sidebar-note {
+  margin: 15px 0; padding: 10px; 
+  border: 1px solid #ccc; background: #f9f9f9; border-radius: 4px;
+  cursor: pointer; transition: all 0.2s ease;
+}
+#cses-sidebar-note:hover { border-color: #999; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+.note-widget-header { font-weight: bold; color: #444; margin-bottom: 5px; font-size: 13px; display: flex; justify-content: space-between; }
+.note-widget-edit-btn { font-weight: normal; color: #888; font-size: 11px; }
+
+#cses-sidebar-note-content { font-size: 12px; color: #333 !important; line-height: 1.4; }
+#cses-sidebar-note-content.empty-note { font-style: italic; color: #999 !important; }
+
+/* Ratings */
+.rating-badge { display: inline-block; font-size: 0.75em; padding: 2px 6px; border-radius: 4px; color: #fff; margin-left: 8px; font-weight: bold; vertical-align: middle; }
+.rating-easy { background: #27ae60; }
+.rating-med { background: #2980b9; }
+.rating-hard { background: #8e44ad; }
+.rating-insane { background: #c0392b; }
+body.cses-hide-ratings .rating-badge { display: none !important; }
+
+/* Copy Button */
+.cses-copy-btn { position: absolute; top: 5px; right: 5px; background: #fff; border: 1px solid #ccc; border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; opacity: 0.6; color: #333; z-index: 10; }
+.cses-copy-btn:hover { opacity: 1; background: #f0f0f0; border-color: #999; }
+.cses-pre-wrapper { position: relative; }
+
+/* List Icons */
+.bookmark-icon { margin-right: 8px; cursor: pointer; color: #d1d5db; transition: 0.2s; }
+.bookmark-icon:hover { color: #f59e0b; transform: scale(1.1); }
+.bookmark-icon.is-bookmarked { color: #f59e0b; }
+.note-icon { cursor: pointer; color: #d1d5db; font-size: 1.1em; }
+.note-icon:hover { color: #3b82f6; }
+.note-icon.has-note { color: #3b82f6; }
+
+
+/* =========================================
+   4. MODAL & PREVIEW
+   ========================================= */
+#cses-note-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(2px);
+  z-index: 9998; display: none; justify-content: center; align-items: center;
+}
+#cses-note-modal {
+  background: #fff; width: 700px; max-width: 90%;
+  border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  z-index: 9999; overflow: hidden; font-family: 'Segoe UI', sans-serif;
+  display: flex; flex-direction: column;
+}
+.modal-header { background: #f1f1f1; color: #333; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.modal-title { font-weight: 600; font-size: 1.1rem; }
+.close-btn { cursor: pointer; color: #999; font-size: 1.5rem; }
+.close-btn:hover { color: #333; }
+
+.modal-tabs-container { padding: 10px 20px; background: #fff; border-bottom: 1px solid #eee; }
+.modal-tabs { display: flex; gap: 5px; background: #eee; padding: 4px; border-radius: 6px; width: fit-content; }
+.modal-tab { padding: 6px 16px; font-size: 0.9rem; font-weight: 500; border-radius: 4px; cursor: pointer; border: none; background: transparent; color: #555; }
+.modal-tab.active { background: #fff; color: #000; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+.modal-body { position: relative; height: 400px; background: #fff; }
+#cses-note-textarea {
+  width: 100%; height: 100%; padding: 20px; border: none; resize: none;
+  font-family: 'Consolas', monospace; font-size: 14px; line-height: 1.6;
+  outline: none; background: #fff; color: #333;
+}
+#cses-note-preview {
+  display: none; width: 100%; height: 100%; padding: 20px; overflow-y: auto;
+  background: #fff; color: #000;
+}
+#cses-note-preview .katex { color: #000 !important; }
+
+.modal-footer { padding: 15px 20px; border-top: 1px solid #eee; background: #fff; display: flex; justify-content: flex-end; gap: 10px; }
+.cses-btn { padding: 8px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; }
+#btn-cancel { background: #f3f4f6; color: #333; }
+#btn-save { background: #2563eb; color: white; }

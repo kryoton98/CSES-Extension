@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "CSES Enhanced",
+  "version": "1.0",
+  "description": "Difficulty ratings, speedrun mode, and practice tools for CSES.",
+  "icons": {
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://cses.fi/*"],
+      "js": ["katex.min.js", "content.js"], 
+      "css": ["styles.css", "katex.min.css"]
+    }
+  ]
+}
