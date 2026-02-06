@@ -8,11 +8,18 @@
     "48": "48.png",
     "128": "128.png"
   },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://cses.fi/*",
+    "https://www.cses.fi/*"
+  ],
   "content_scripts": [
     {
       "matches": ["https://cses.fi/*"],
-      "js": ["katex.min.js", "content.js"], 
-      "css": ["styles.css", "katex.min.css"]
+      "css": ["styles.css", "katex.min.css"],
+      "js": ["katex.min.js", "content.js"]
     }
   ]
 }
