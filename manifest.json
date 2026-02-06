@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "CSES Enhanced",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Difficulty ratings, speedrun mode, and practice tools for CSES.",
   "icons": {
     "16": "16.png",
