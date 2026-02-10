@@ -2,7 +2,7 @@
 
 A browser extension that supercharges your competitive programming training on [CSES.fi](https://cses.fi).
 
-### 🚀 [Install for Free on Microsoft Edge](https://shorturl.at/QNMSK)
+### 🚀 [Install for Free on Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/cses-enhanced/eadblhdjkbgmgpiplfdfjlaghomabnem)
 *(Compatible with Chrome, Brave, Vivaldi and others via manual install)*
 
 ---
